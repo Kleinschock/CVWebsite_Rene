@@ -987,4 +987,206 @@ section {
     }
     
     .project-card.featured {
-     <response clipped><NOTE>To save on context only part of this file has been shown to you. You should retry this tool after you have searched inside the file with `grep -n` in order to find the line numbers of what you are looking for.</NOTE>
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    .nav-list {
+        display: none;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    .timeline::before {
+        left: 30px;
+    }
+    
+    .timeline-marker {
+        left: 30px;
+    }
+    
+    .timeline-content {
+        width: calc(100% - 60px);
+        margin-left: 60px !important;
+    }
+    
+    .publication-item {
+        flex-direction: column;
+    }
+    
+    .publication-year {
+        padding: 15px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.75rem;
+    }
+    
+    section {
+        padding: 60px 0;
+    }
+    
+    .hero-cta {
+        flex-direction: column;
+    }
+    
+    .experience-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .skills-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animation Classes */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.slide-in-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.slide-in-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.scale-in {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scale-in.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Dark/Light Mode Transition */
+.light-mode {
+    color: #121212;
+    background-color: #f5f5f5;
+}
+
+.light-mode .header.scrolled {
+    background-color: rgba(245, 245, 245, 0.9);
+}
+
+.light-mode .nav-link {
+    color: #121212;
+}
+
+.light-mode .theme-toggle-icon {
+    border-color: #121212;
+}
+
+.light-mode .theme-toggle-icon::before {
+    background-color: #121212;
+}
+
+.light-mode .menu-toggle-icon,
+.light-mode .menu-toggle-icon::before,
+.light-mode .menu-toggle-icon::after {
+    background-color: #121212;
+}
+
+.light-mode .experience-card,
+.light-mode .project-card,
+.light-mode .skills-category,
+.light-mode .contact-form-container {
+    background-color: #ffffff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.light-mode .timeline::before {
+    background-color: #e0e0e0;
+}
+
+.light-mode .filter-btn,
+.light-mode .project-tag,
+.light-mode .interest-item,
+.light-mode .contact-icon,
+.light-mode .social-link,
+.light-mode .form-group input,
+.light-mode .form-group textarea {
+    background-color: #e0e0e0;
+    color: #121212;
+}
+
+.light-mode .footer {
+    background-color: #e0e0e0;
+}
+
+.light-mode .footer-copyright {
+    color: #5a5a5a;
+}
+
+/* Transition for theme change */
+body,
+.header,
+.nav-link,
+.theme-toggle-icon,
+.theme-toggle-icon::before,
+.menu-toggle-icon,
+.menu-toggle-icon::before,
+.menu-toggle-icon::after,
+.experience-card,
+.project-card,
+.skills-category,
+.contact-form-container,
+.timeline::before,
+.filter-btn,
+.project-tag,
+.interest-item,
+.contact-icon,
+.social-link,
+.form-group input,
+.form-group textarea,
+.footer,
+.footer-copyright {
+    transition: all 0.3s ease;
+}

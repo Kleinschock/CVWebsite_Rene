@@ -542,4 +542,112 @@ function initExperienceFilter() {
         btn.addEventListener('click', () => {
             // Update active button
             filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('ac<response clipped><NOTE>To save on context only part of this file has been shown to you. You should retry this tool after you have searched inside the file with `grep -n` in order to find the line numbers of what you are looking for.</NOTE>
+            btn.classList.add('active');
+            
+            const filterValue = btn.getAttribute('data-filter');
+            
+            // Filter cards
+            experienceCards.forEach(card => {
+                if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                    gsap.to(card, {
+                        opacity: 1,
+                        scale: 1,
+                        duration: 0.5,
+                        display: 'block'
+                    });
+                } else {
+                    gsap.to(card, {
+                        opacity: 0,
+                        scale: 0.8,
+                        duration: 0.5,
+                        display: 'none'
+                    });
+                }
+            });
+        });
+    });
+}
+
+// Theme toggle functionality
+function initThemeToggle() {
+    const themeToggle = document.querySelector('.theme-toggle');
+    const body = document.body;
+    
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+        body.classList.add('light-mode');
+    }
+    
+    themeToggle.addEventListener('click', () => {
+        body.classList.toggle('light-mode');
+        
+        // Save theme preference
+        if (body.classList.contains('light-mode')) {
+            localStorage.setItem('theme', 'light');
+        } else {
+            localStorage.setItem('theme', 'dark');
+        }
+        
+        // Animate theme toggle icon
+        gsap.to(themeToggle, {
+            rotate: 180,
+            duration: 0.5,
+            onComplete: () => {
+                gsap.set(themeToggle, { rotate: 0 });
+            }
+        });
+    });
+}
+
+// Contact form functionality
+function initContactForm() {
+    const contactForm = document.querySelector('.contact-form');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Validate form (simple validation)
+            if (name && email && subject && message) {
+                // Simulate form submission
+                const submitBtn = contactForm.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+                
+                // Simulate API call with timeout
+                setTimeout(() => {
+                    // Reset form
+                    contactForm.reset();
+                    
+                    // Show success message
+                    submitBtn.textContent = 'Message Sent!';
+                    
+                    // Reset button after 3 seconds
+                    setTimeout(() => {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalText;
+                    }, 3000);
+                    
+                    // Show success animation
+                    gsap.fromTo(submitBtn, 
+                        { backgroundColor: '#34A853' },
+                        { 
+                            backgroundColor: '#4285F4',
+                            duration: 2,
+                            ease: "power3.out"
+                        }
+                    );
+                }, 1500);
+            }
+        });
+    }
+}
